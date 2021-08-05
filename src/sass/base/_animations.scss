@@ -1,0 +1,43 @@
+.lighthouse {
+  animation: lighthouse 1.2s ease infinite;
+}
+
+@keyframes lighthouse {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
+.ring {
+  .btn:hover & {
+    animation: ring 1s infinite ease-in-out;
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0)
+  }
+  10% {
+    transform: rotate(-25deg)
+  }
+  20% {
+    transform: rotate(25deg)
+  }
+  30% {
+    transform: rotate(-25deg)
+  }
+  40% {
+    transform: rotate(25deg)
+  }
+  50% {
+    transform: rotate(0)
+  }
+  100% {
+    transform: rotate(0)
+  }
+}

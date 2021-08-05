@@ -1,0 +1,36 @@
+.banner {
+  z-index: 1;
+  position: relative;
+  padding: 60px 0;
+  &__title, &__text {
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 2px 3px $black-transparent;
+  }
+  &__title {
+    color: $secondary;
+    font-size: 40px;
+    line-height: 1.6;
+  }
+  &__text {
+    color: $white;
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    & a {
+      color: $secondary;
+    }
+    @include respond-to(small) {
+      padding-bottom: 0;
+      font-size: 20px;
+      // text-align: left;
+    }
+    @include respond-to(large) {
+      font-size: 40px;
+    }
+    & span {
+      color: transparent;
+      -webkit-text-stroke: 2px $white;
+    }
+  }
+}

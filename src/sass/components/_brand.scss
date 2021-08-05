@@ -1,0 +1,65 @@
+.brand {
+  z-index: 102;
+  position: relative;
+  left: ($gutter / 2);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  line-height: 1;
+  text-decoration: none;
+  @include respond-to(small) {
+    left: 0;
+  }
+  &::before {
+    margin-right: 10px;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/images/logo.svg');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    @include respond-to(tiny) {
+      margin-right: 10px;
+      width: 35px;
+      height: 35px;
+      background-size: 35px;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+  &__title, &__subtitle {
+    color: $white;
+    font-family: $ubuntu;
+    line-height: 1;
+  }
+  &__title {    
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 18px;
+    @include respond-to(tiny) {
+      font-size: 20px;
+      line-height: 1;
+    }
+  }
+  &__subtitle {
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.2px;
+    @include respond-to(tiny) {
+      font-size: 13px;
+      letter-spacing: 0.4px;
+    }
+  }
+  &--footer {
+    left: 0;
+    grid-area: brand;
+    justify-self: center;
+    @include respond-to(large) {
+      justify-self: start;
+    }
+  }
+}

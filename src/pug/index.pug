@@ -1,0 +1,70 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Asistencia Extranjera
+    meta(name="description" content="")
+    link(rel="icon" type="image/png" href="./assets/images/favicon.png")
+    // build:css css/main.min.css 
+    link(rel="stylesheet" href="./css/main.css")
+    // endbuild 
+  body
+
+    // header 
+    include partials/header.pug
+
+    // hero 
+    include partials/hero.pug
+    
+    // banner  
+    section.wrapper.bg--gradient
+      .container
+        .row
+          .col-xs-12
+            .banner
+              p.banner__text
+                |Para llamadas desde el extranjero marque 
+                a(href="tel:91XXXXXXX") 91XXXXXXX 
+                |consigue todo con una sola llamada
+
+    // banner 
+    section.wrapper.bg--smartphone
+      .container
+        .row
+          .col-xs-12
+            .banner
+              p.banner__title Información teléfonica de empresas y organismos
+
+    // info 
+    section.wrapper.bg--gradient-invert
+      .container
+        .row
+          .col-xs-12
+            .info
+              h2.info__title
+                |Información de teléfonos las 
+                span 24h 
+                |/ 
+                span 365 días
+              p.info__text
+                span Información de teléfonos y direcciones de empresas y organismos de España. 
+                |La información que ofrecemos puede estar disponible gratuitamente en internet, aunque llamando a 11873 conseguirás esta información 
+                span cómodamente 
+                |estés donde estés y de forma 
+                span inmediata.
+
+    // features 
+    section.wrapper.bg--white
+      .container
+        .row
+          .col-xs-12
+            include partials/features.pug
+
+    // footer 
+    include partials/footer.pug
+
+    // scripts 
+    // build:js js/scripts.min.js 
+    script(src="./js/scripts.js")
+    // endbuild 

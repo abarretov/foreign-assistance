@@ -1,0 +1,27 @@
+.info {
+	padding: 60px 0;
+	&__title, &__text {
+		& span {
+		  color: $secondary;
+		  font-weight: 700;
+		}
+	}
+	&__title {		
+	  margin-bottom: 30px;
+	  color: $white;
+	  font-size: 32px;
+	  font-weight: 700;
+	  line-height: 1.2;
+	  letter-spacing: 2px;
+	  text-align: center;
+	}
+	&__text {
+	  margin-bottom: 15px;
+	  width: 100%;
+	  color: $white;
+	  line-height: 1.6;
+	  @include respond-to(tiny) {
+	  	font-size: 18px;
+	  }
+	}
+}

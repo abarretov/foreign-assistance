@@ -1,0 +1,121 @@
+// RESPOND-TO ============================================================
+@mixin respond-to($breakpoint) {
+  // check if the key exists
+  @if map-has-key($breakpoints, $breakpoint) {
+    // get the value of the key
+    $value: map-get($breakpoints, $breakpoint);
+    @media only screen and (min-width: $value) {
+      @content;
+    }
+  }
+  @else { 
+    @warn "Unknown #{$breakpoint} in $breakpoints";
+  }
+}
+
+// FONT-FACE ============================================================
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg otf) {
+  $src: null;
+  $extmods: (eot: "?", svg: "#" + str-replace($name, " ", "_"));
+  $formats: (otf: "opentype", ttf: "truetype");
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    font-display: swap;
+    src: $src;
+  }
+}
+
+// PLACEHOLDER ============================================================
+@mixin placeholder() {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}
+
+// ROW-PROPERTY-GENERATOR ============================================================
+@mixin row-generator($breakpoint: 'xs') {
+
+  &.top-#{$breakpoint} {
+    align-items: flex-start;
+  }
+  &.middle-#{$breakpoint} {
+    align-items: center;
+  }
+  &.bottom-#{$breakpoint} {
+    align-items: flex-end;
+  }
+  &.baseline-#{$breakpoint} {
+    align-items: baseline;
+  }
+  &.stretch-#{$breakpoint} {
+    align-items: stretch; // default value
+  }
+  &.start-#{$breakpoint} {
+    justify-content: flex-start; // default value
+  }
+  &.center-#{$breakpoint} {
+    justify-content: center;
+  }
+  &.end-#{$breakpoint} {
+    justify-content: flex-end;
+  }
+  &.around-#{$breakpoint} {
+    justify-content: space-around;
+  }
+  &.between-#{$breakpoint} {
+    justify-content: space-between;
+  }
+  &.evenly-#{$breakpoint} {
+    justify-content: space-evenly;
+  }
+}
+
+// COLUMN-GENERATOR ============================================================
+@mixin column-generator($breakpoint: 'xs', $offset: false, $order: false) {
+
+  // columns
+  @for $i from 1 through $columns-number {
+    .col-#{$breakpoint}-#{$i} {
+      flex: 0 0 percentage($i / $columns-number);
+      max-width: (100% * $i) / $columns-number;
+    }
+  }
+
+  // size columns based on the natural width of their content
+  .col-#{$breakpoint}-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  // offset
+  @if $offset {
+    @for $i from 1 through $columns-number {
+      .col-#{$breakpoint}-offset-#{$i} {
+        margin-left: (100% * $i) / $columns-number;
+      }
+    }
+  }
+
+  // order
+  @if $order {
+    .order-#{$breakpoint}-first {
+      order: -1;
+    }
+    .order-#{$breakpoint}-last {
+      order: $columns-number + 1;
+    }
+    @for $i from 1 through $columns-number {
+      .order-#{$breakpoint}-#{$i} {
+        order: $i;
+      }
+    }
+  }
+}

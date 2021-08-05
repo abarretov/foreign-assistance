@@ -1,0 +1,188 @@
+.hero {
+  position: relative;
+  background-image: url('../assets/images/busy-man.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  &::before, &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &::before {
+    z-index: 1;
+    background-color: $primary-transparent;
+    @include respond-to(large) {
+      background-color: $primary;
+      clip-path: polygon(0% 0%, 53% 0%, 60% 20%, 53% 100%, 0% 100%);
+    }
+    @include respond-to(huge) {
+      clip-path: polygon(0% 0%, 50% 0%, 55% 20%, 50% 100%, 0% 100%);
+    }
+  }
+  &::after {
+    z-index: 2;
+    background-color: $black-transparent;
+    @include respond-to(large) {
+      background-color: $black-transparent;
+      clip-path: polygon(0% 0%, 47% 0%, 60% 20%, 48% 100%, 0% 100%);
+    }
+    @include respond-to(huge) {
+      clip-path: polygon(0% 0%, 45% 0%, 55% 20%, 47% 100%, 0% 100%);
+    }
+  }
+  &__wrapper {
+    @extend %wrapper;
+    height: calc(100vh - 65px);
+    overflow: hidden;
+    @include respond-to(huge) {
+      max-height: 735px;
+    }
+    &::before {
+      @include respond-to(large) {
+        z-index: 0;
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $tertiary;
+        opacity: 0.3;
+      }
+    }
+  }
+  &__container {
+    z-index: 3;
+    @extend %container;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+    @include respond-to(large) {
+      grid-template-columns: 2fr 2fr;
+      grid-template-areas: "content .";
+    }
+  }
+  &__content {
+    padding: 0 5%;
+    grid-area: content;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  &__title, &__subtitle {
+    width: 100%;
+    color: $light-gray;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 1;
+    @include respond-to(large) {
+      text-align: left;
+    }
+  }
+  &__title {
+    margin-bottom: 30px;
+    font-size: 32px;
+    @include respond-to(extra-small) {
+      font-size: 40px;
+    }
+    @include respond-to(medium) {
+      font-size: 56px;
+    }
+    @include respond-to(large) {
+      font-size: 40px;
+    }
+    & span {
+      color: $tertiary;
+    }
+  }
+  &__subtitle {
+    margin-bottom: 5%;
+    font-family: $ubuntu;
+    font-size: 16px;
+    @include respond-to(tiny) {
+      font-size: 20px;
+    }
+    @include respond-to(large) {
+      font-size: 32px;
+    }
+  }
+  &__cta {    
+    margin-bottom: 5%;
+    width: 100%;
+    z-index: 1;
+    @include respond-to(large) {
+      margin-bottom: 7%;
+    }
+  }
+  &__price {
+    margin: 0 auto;
+    width: 90%;
+    color: $light-gray;
+    font-family: $open-sans;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-align: center;
+    z-index: 1;
+    @include respond-to(extra-small) {
+      font-size: 0.9rem;
+    }
+    @include respond-to(small) {
+      width: 70%;
+      font-size: 1rem;
+    }
+    @include respond-to(large) {
+      text-align: left;
+      width: 100%;
+    }
+  }
+  &__footer {
+    z-index: 3;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $secondary;
+  }
+  &__text {
+    padding: 7px 0;
+    min-height: 30px;
+    color: $white;
+    font-size: 1rem;
+    line-height: 1;
+    text-align: center;
+    @include respond-to(extra-small) {
+      padding: 5px 0;
+      font-size: 1.2rem;
+    }
+  }
+  &__nav {
+    display: none;
+    @include respond-to(small) {
+      display: flex;
+      justify-content: center;
+      flex-flow: row wrap;
+      align-items: center;
+      padding: 5px;
+      height: 60px;
+    }
+    @include respond-to(large) {
+      justify-content: space-between;
+      height: 35px;
+    }
+  }
+  &__item {
+    padding: 0 5px;
+    color: $white;
+    font-size: 14px;
+    font-weight: 700;
+    text-shadow: 2px 2px 3px $black-transparent;
+  }
+}

@@ -1,0 +1,42 @@
+// ================================================================= grid system
+$container-max-width: 100% !default;
+$container-max-width-sm: 720px !default;
+$container-max-width-md: 960px !default;
+$container-max-width-lg: 1200px !default;
+$container-max-width-xl: 1280px !default;
+$columns-number: 12 !default; // Set number of columns in the grid
+$gutter: 60px !default; // Set gutter size
+
+// ================================================================= breakpoints
+$breakpoints: (
+  tiny: 360px,
+  extra-small: 411px,
+  small: 768px,
+  medium: 1024px,
+  large: 1280px,
+  extra-large: 1366px,
+  huge: 1920px,
+  giant: 2560px,
+  colossal: 2880px
+) !default;
+
+// ====================================================================== colors
+$primary: #17706E;
+$light-primary: #487b7a;
+$secondary: #FB7813;
+$dark-secondary: #BC5403;
+$tertiary: #B6EB7A;
+$dark-gray: #444444;
+$gray: #D2D2D2;
+$light-gray: #EFEFEF;
+$white: #F7F7EE;
+$black: #000000;
+$white-transparent: transparentize($white, 0.6);
+$primary-transparent: transparentize($primary, 0.3);
+$primary-transparent--hero: transparentize($primary, 0.5);
+$black-transparent: transparentize($black, 0.7);
+$black-transparent--hero: transparentize($black, 0.8);
+
+// ======================================================================= fonts
+$ubuntu: 'Ubuntu', sans-serif;
+$open-sans: 'Open Sans', sans-serif;

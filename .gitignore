@@ -1,0 +1,7 @@
+info
+build
+public
+node_modules
+.env.development
+.js-cache
+.scss-cache
